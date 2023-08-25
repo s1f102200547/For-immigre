@@ -6,25 +6,26 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from './Header';
 import FeaturedPost from './FeaturedPost';
-import { feature1 } from './feature1';
-import { feature2 } from './feature2';
 import GetDB from '../../conponents/GetDB';
-import MakeDatas from './MakeDatas';
 
 
 const defaultTheme = createTheme();
 
 export default function Blog() {
 
-  const [ tourismDatas, setTourismDatas ] = useState([]);
-  const [ taxDatas, setTaxDatas ] = useState([])
-  const [ employmentDatas, setEmploymentDatas ] = useState([])
-  const [ animeDatas, setAnimeDatas ] = useState([])
-  const [ lowDatas, setLowDatas ] = useState([])
-  const [ mannerDatas, setMannerDatas ] = useState([])
-  const [ safetyDatas, setSafetyDatas ] = useState([])
-  const [ economyDatas, setEconomyDatas ] = useState([])
+  const sections = ['Tourism', 'Tax', 'Employment', 'Anime', 'Low', 'Manner', 'Safety', 'Economy'];
   const [ blogData, setBlogData ] = useState(null);
+  const [ mainContent, setMainContent ] = useState(null);
+
+  function changeMainContent(section){
+    const lowerCaseOfSection = section.toLowerCase(); //”data.users.小文字” なので小文字にそろえる
+    const sectionData = Object.values(blogData.users[lowerCaseOfSection]);
+    setMainContent(
+      sectionData.map((data) => (
+        <FeaturedPost key={data.title} data={data} />
+      ))
+    )
+  }
 
   useEffect(() => {
     GetDB()
@@ -36,51 +37,28 @@ export default function Blog() {
       console.log("db error");
     })
   }, []);
-
+  //↓blogDataを定義後mainContentを定義
   useEffect(() => {
     if(blogData){
-      setTourismDatas(MakeDatas(blogData.users.tourism))
-      setTaxDatas(MakeDatas(blogData.users.tax))
-      setEmploymentDatas(MakeDatas(blogData.users.employment))
-      setAnimeDatas(MakeDatas(blogData.users.anime))
-      setLowDatas(MakeDatas(blogData.users.low))
-      setMannerDatas(MakeDatas(blogData.users.manner))
-      setSafetyDatas(MakeDatas(blogData.users.safety))
-      setEconomyDatas(MakeDatas(blogData.users.economy))
-    }
-  }, [blogData])
-
-  const sections = ['Tourism', 'Tax', 'Employment', 'Anime', 'Low', 'Manner', 'Safety', 'Economy'];
-
-  const [ blogPage, setBlogPage ] = useState(feature1);
-  const [ posts, setPosts ] = useState(
-    blogPage.map((post) => (
-      <FeaturedPost key={post.title} post={post} />
-    ))
-  );
-
-  function changeBlogPage(section){
-    console.log(section.feature);
-    setBlogPage(section.feature)
-  }
-
-  useEffect(() => {
-    setPosts(
-      blogPage.map((post) => (
-        <FeaturedPost key={post.title} post={post} />
+      const tourismData = Object.values(blogData.users.tourism);
+      console.log("tourismData", tourismData)
+      setMainContent(
+      tourismData.map((data) => (
+        <FeaturedPost key={data.title} data={data} />
       ))
     )
-  }, [blogPage]);
+    }
+  }, [blogData]);
 
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <Container maxWidth="lg">
-      <Header sections={sections} title="Blog" changeBlogPage={changeBlogPage}/>
+      <Header sections={sections} title="Blog" changeMainContent={changeMainContent}/>
         <main>
           <Grid container spacing={5} sx={{ mt: 3 }}>
-          {posts}
+          {mainContent}
           </Grid>
         </main>
       </Container>

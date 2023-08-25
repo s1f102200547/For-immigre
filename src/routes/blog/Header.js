@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
 function Header(props) {
-  const { sections, title, changeBlogPage } = props;
+  const { sections, title, changeMainContent } = props;
 
   return (
     <React.Fragment>
@@ -42,12 +42,11 @@ function Header(props) {
       >
         {sections.map((section) => (
           <Button
-            onClick={()=>changeBlogPage(section)}
+            onClick={()=>changeMainContent(section)}
             color="inherit"
-            noWrap
             key={section}
             variant="body2"
-            sx={{ p: 1, flexShrink: 0 }}
+            sx={{ p: 1, flexShrink: 0, whiteSpace: 'nowrap'}}
           >
             {section}
           </Button>
