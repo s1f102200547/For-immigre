@@ -23,7 +23,7 @@ export default function Blog() {
     const sectionData = Object.values(blogData.users[lowerCaseOfSection]);
     setMainContent(
       sectionData.map((data) => (
-        <FeaturedPost key={data.title} data={data} showArticle={showArticle} />
+        <FeaturedPost key={data.title} data={data} showArticle={showArticle} /> //WARING titleが被ったときにkeyが唯一ではなくなる
       ))
     )
     console.log(mainContent)
@@ -52,7 +52,7 @@ export default function Blog() {
       console.log("tourismData", tourismData)
       setMainContent(
       tourismData.map((data) => (
-        <FeaturedPost key={data.title} data={data} showArticle={showArticle} />
+        <FeaturedPost key={data.title} data={data} showArticle={showArticle} /> //WARING titleが被ったときにkeyが唯一ではなくなる
       ))
     )
     }
@@ -63,7 +63,7 @@ export default function Blog() {
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <Container maxWidth="lg">
-      <Header sections={sections} title="Blog" showOtherSection={showOtherSection}/>
+      <Header sections={sections} title="For immigre" showOtherSection={showOtherSection}/>
         <main>
           <Grid container spacing={5} sx={{ mt: 3 }}>
           {mainContent}
