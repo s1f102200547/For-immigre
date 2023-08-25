@@ -26,6 +26,7 @@ export default function Blog() {
         <FeaturedPost key={data.title} data={data} showArticle={showArticle} />
       ))
     )
+    console.log(mainContent)
   }
 
   function showArticle(data){
