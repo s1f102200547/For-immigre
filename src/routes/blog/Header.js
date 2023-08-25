@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
 function Header(props) {
-  const { sections, title, changeMainContent } = props;
+  const { sections, title, showOtherSection } = props;
 
   return (
     <React.Fragment>
@@ -42,7 +42,7 @@ function Header(props) {
       >
         {sections.map((section) => (
           <Button
-            onClick={()=>changeMainContent(section)}
+            onClick={()=>showOtherSection(section)}
             color="inherit"
             key={section}
             variant="body2"

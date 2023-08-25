@@ -7,6 +7,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from './Header';
 import FeaturedPost from './FeaturedPost';
 import GetDB from '../../conponents/GetDB';
+import Article from './Article';
 
 
 const defaultTheme = createTheme();
@@ -17,13 +18,19 @@ export default function Blog() {
   const [ blogData, setBlogData ] = useState(null);
   const [ mainContent, setMainContent ] = useState(null);
 
-  function changeMainContent(section){
+  function showOtherSection(section){
     const lowerCaseOfSection = section.toLowerCase(); //”data.users.小文字” なので小文字にそろえる
     const sectionData = Object.values(blogData.users[lowerCaseOfSection]);
     setMainContent(
       sectionData.map((data) => (
-        <FeaturedPost key={data.title} data={data} />
+        <FeaturedPost key={data.title} data={data} showArticle={showArticle} />
       ))
+    )
+  }
+
+  function showArticle(data){
+    setMainContent(
+      <Article data={data}/>
     )
   }
 
@@ -44,7 +51,7 @@ export default function Blog() {
       console.log("tourismData", tourismData)
       setMainContent(
       tourismData.map((data) => (
-        <FeaturedPost key={data.title} data={data} />
+        <FeaturedPost key={data.title} data={data} showArticle={showArticle} />
       ))
     )
     }
@@ -55,7 +62,7 @@ export default function Blog() {
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <Container maxWidth="lg">
-      <Header sections={sections} title="Blog" changeMainContent={changeMainContent}/>
+      <Header sections={sections} title="Blog" showOtherSection={showOtherSection}/>
         <main>
           <Grid container spacing={5} sx={{ mt: 3 }}>
           {mainContent}
