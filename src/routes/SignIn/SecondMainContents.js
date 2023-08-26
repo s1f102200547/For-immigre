@@ -2,11 +2,11 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from '../../firebase/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-export default function SecondMainContents({ changeBlurredBackgroundColor }) {
+export default function SecondMainContents({ changeBlurredBackgroundColor, SetLoggedInUser }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [ resultAuth, setResultAuth ] = useState(false);
@@ -16,10 +16,11 @@ export default function SecondMainContents({ changeBlurredBackgroundColor }) {
 
     function handleSubmit() {
         signInWithEmailAndPassword(auth, email, password)
-        .then(() =>{
+        .then((user) =>{
             setResultAuth(true);
             changeBlurredBackgroundColor(resultAuth);
-            nav("/blog");
+            SetLoggedInUser(user)
+            nav('/');
         })
         .catch((error) => {
             console.log(error.code, error.message);

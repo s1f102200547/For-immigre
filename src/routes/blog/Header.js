@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 
 function Header(props) {
   const { sections, title, showOtherSection } = props;
@@ -12,7 +12,7 @@ function Header(props) {
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Link href="/checkout">
+        <Link to="/checkout">
         <Button size="small">Subscribe</Button>
         </Link>
         <Typography
@@ -28,7 +28,7 @@ function Header(props) {
         <IconButton>
           <SearchIcon />
         </IconButton>
-        <Link href="/signup">
+        <Link to="/signup">
         <Button variant="outlined" size="small">
           Sign up
         </Button>

@@ -8,8 +8,8 @@ import FirstMainContents from "./FirstMainContents";
 import SecondMainContents from './SecondMainContents';
 import forestImg from "../../img/forest.png";
 
-
-export default function SignIn(){
+//WARNING ログイン成功時に背景が緑にならない
+export default function SignIn({ SetLoggedInUser }){
   const [isSecondScreen, setIsSecondScreen] = useState(false);
   const [blurredBackgroundColor, setBlurredBackgroundColor] = useState("white");
 
@@ -39,7 +39,7 @@ export default function SignIn(){
                <NavLinksToOtherContents>
                <Grid container spacing={1}>
                  <Grid xs={6}>
-                   <Link href="/" underline="none">
+                   <Link to="/" underline="none">
                      <OtherContent>Homepage</OtherContent>
                    </Link>
                  </Grid>
@@ -58,7 +58,7 @@ export default function SignIn(){
 
             <MainWrapper>
               <BlurredBackground color={blurredBackgroundColor} />
-              {isSecondScreen ? <SecondMainContents changeBlurredBackgroundColor={changeBlurredBackgroundColor}/> : <FirstMainContents  toggleSecondScreen={toggleSecondScreen}/>}
+              {isSecondScreen ? <SecondMainContents changeBlurredBackgroundColor={changeBlurredBackgroundColor} SetLoggedInUser={SetLoggedInUser} /> : <FirstMainContents  toggleSecondScreen={toggleSecondScreen}/>}
             </MainWrapper>
 
             <FooterWrapper>
