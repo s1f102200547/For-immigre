@@ -5,9 +5,11 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import SearchBar from './SearchBar';
+import { useState } from 'react';
 
 function Header(props) {
-  const { sections, title, showOtherSection } = props;
+  const { sections, title, showOtherSection, showSearchedArticles } = props;
 
   return (
     <React.Fragment>
@@ -25,9 +27,8 @@ function Header(props) {
         >
           {title}
         </Typography>
-        <IconButton>
-          <SearchIcon />
-        </IconButton>
+        <SearchBar func={showSearchedArticles} />
+        
         <Link to="/signup">
         <Button variant="outlined" size="small">
           Sign up
