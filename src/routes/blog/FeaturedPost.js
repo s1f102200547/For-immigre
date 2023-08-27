@@ -11,14 +11,11 @@ function FeaturedPost(props) {
 
   return (
     <Grid item xs={12} md={6}>
-      <CardActionArea component="a" onClick={()=>showArticle(data)}>
+      <CardActionArea onClick={()=>showArticle(data)} data-testid="featured-card">
         <Card sx={{ display: 'flex' }}>
           <CardContent sx={{ flex: 1 }}>
             <Typography component="h2" variant="h5">
               {data.title}
-            </Typography>
-            <Typography variant="subtitle1" color="text.secondary">
-              {data.date}
             </Typography>
             <Typography variant="subtitle1" paragraph>
               {data.description}

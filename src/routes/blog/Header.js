@@ -15,7 +15,7 @@ function Header(props) {
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Link to="/checkout">
-        <Button size="small">Subscribe</Button>
+        <Button size="small">SUBSCRIBE</Button>
         </Link>
         <Typography
           component="h2"
@@ -31,7 +31,7 @@ function Header(props) {
         
         <Link to="/signup">
         <Button variant="outlined" size="small">
-          Sign up
+          SIGN UP
         </Button>
         </Link>
       </Toolbar>

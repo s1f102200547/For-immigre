@@ -11,6 +11,7 @@ export default function SearchBar(props) {
     const [ searchWords, setSearchWords ] = useState();
   return (
     <Paper
+      data-testid="searchbar"
       component="form"
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: "30%" }}
     >
@@ -21,7 +22,7 @@ export default function SearchBar(props) {
         onChange={e => setSearchWords(e.target.value)}
       />
       <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-        <SearchIcon onClick={()=>func(searchWords)} />
+        <SearchIcon onClick={()=>func(searchWords)} data-testid= "searchIcon" />
       </IconButton>
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
     </Paper>

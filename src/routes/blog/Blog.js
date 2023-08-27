@@ -73,7 +73,7 @@ const filteredResult = result.filter(item => {
   console.log("filterdResult", filteredResult);
   setMainContent(
     filteredResult.map((data) => (
-      <FeaturedPost key={data.title} data={data} showArticle={showArticle} /> //WARING titleが被ったときにkeyが唯一ではなくなる
+      <FeaturedPost key={data.title} data={data} showArticle={showArticle} data-testid="featured-post" /> //WARING titleが被ったときにkeyが唯一ではなくなる
     ))
   )
   }
