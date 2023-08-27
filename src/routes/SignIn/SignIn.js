@@ -34,7 +34,7 @@ export default function SignIn({ SetLoggedInUser }){
           <BackGroundImg src={forestImg} alt="the forest" />
           <ContentWrapper>
             <CompanyInfoWrapper>
-              <CompanyName>For immigre</CompanyName>
+              <CompanyName data-testid="company-name">For immigre</CompanyName>
               {!isSecondScreen ?(
                <NavLinksToOtherContents>
                <Grid container spacing={1}>
@@ -51,7 +51,7 @@ export default function SignIn({ SetLoggedInUser }){
                </Grid>
              </NavLinksToOtherContents>
               ):
-              <OtherContent>Sign in</OtherContent>
+              <OtherContent data-testid="text-signin">Sign in</OtherContent>
               }
              
             </CompanyInfoWrapper>
@@ -62,7 +62,7 @@ export default function SignIn({ SetLoggedInUser }){
             </MainWrapper>
 
             <FooterWrapper>
-                <Copyright>Copyright © 2017-2023 <Green>For immigre</Green>. All rights reserved.</Copyright>
+                <Copyright data-testid="copyright">Copyright © 2017-2023 <Green>For immigre</Green>. All rights reserved.</Copyright>
             </FooterWrapper>
           </ContentWrapper>
         </ScreenBackground>
