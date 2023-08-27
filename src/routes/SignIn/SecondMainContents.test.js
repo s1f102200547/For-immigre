@@ -32,7 +32,7 @@ describe('SecondMainContents', () => {
 
     const emailInput = screen.getByTestId('email-input');
     const passwordInput = screen.getByTestId('password-input');
-    const signinButton = screen.getByTestId('signin-button');
+    const signinButton = screen.getByTestId('second-signin-button');
 
     // フォームに入力
     fireEvent.change(emailInput, { target: { value: emailValue } });
