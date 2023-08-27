@@ -45,6 +45,7 @@ export default function SecondMainContents({ changeBlurredBackgroundColor, SetLo
                     autoComplete="email"
                     autoFocus
                     value={email}
+                    inputProps={{ "data-testid": "email-input" }}
                     onChange={e => setEmail(e.target.value)}
                 />
                 <TextField
@@ -57,11 +58,13 @@ export default function SecondMainContents({ changeBlurredBackgroundColor, SetLo
                     id="password"
                     autoComplete="current-password"
                     value={password}
+                    inputProps={{ "data-testid": "password-input" }}
                     onChange={e => setPassword(e.target.value)}
                 />
             </Box>
             <Button
                 type="submit"
+                data-testid="signin-button"
                 onClick={handleSubmit}
                 variant="contained"
                 color='success'
