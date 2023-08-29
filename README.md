@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# For immigre
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+移民向けの情報をブログ形式で掲載するwebアプリケーションです。
 
-## Available Scripts
+## 概要
 
-In the project directory, you can run:
+このプロジェクトは、React.jsを使用して作成されたウェブアプリケーションです。ユーザーインターフェースの構築にはReactコンポーネントを使用し、パッケージ管理にはYarnを使用しました。また、バックエンドとしてFirebaseを活用しています。
 
-### `npm start`
+## デモ
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+プロジェクトのデモは次のリンクからご覧いただけます: [デモリンク](https://for-immigre.web.app/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+デモ用アカウント:
+- メールアドレス: test@test.com
+- パスワード: test1234
 
-### `npm test`
+## 機能
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Firebase authでログインを制限します。
+- Firebaseデータベースからブログデータを取得して表示します。
+- ブログ一覧ページでは、各ブログのタイトル、投稿日、内容の一部を表示します。
+- 検索バーを使用して特定のキーワードに関連するブログを検索し、結果を表示します。
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## インストールと実行
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+以下の手順に従って、プロジェクトをクローンして実行できます。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. リポジトリをクローンします。
+   ```bash
+   git clone git@github.com:s1f102200547/for-immigre.git
 
-### `npm run eject`
+2. プロジェクトフォルダに移動します。
+   ```bash
+   cd for-immigre
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. 必要なパッケージをインストールします。
+   ```bash
+   yarn install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. アプリケーションをローカルで実行します。
+   ```bash
+   yarn start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### 使用技術
+React.js
+Yarn
+Firebase
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### ライセンス
 
-## Learn More
+このプロジェクトは MIT ライセンスのもとで公開されています。詳細については [LICENSEファイル](LICENSE)をご覧ください。
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+MIT License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### 作者
+長澤明大
