@@ -3,7 +3,6 @@ import { useState } from "react";
 
 import Blog from "./routes/blog/Blog";
 import SignIn from "./routes/SignIn/SignIn";
-import Pricing from "./routes/pricing/Pricing";
 
 function App() {
 
@@ -26,7 +25,6 @@ function App() {
       <Routes>
         <Route path="signin" element={<SignIn SetLoggedInUser={SetLoggedInUser} />} />
         <Route path="/" element={<RequiredAuth><Blog /></RequiredAuth>} />
-        <Route path="pricing" element={<RequiredAuth><Pricing/></RequiredAuth>}/>
         <Route path='*' element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
