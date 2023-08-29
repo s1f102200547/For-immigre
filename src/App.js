@@ -4,7 +4,6 @@ import { useState } from "react";
 import Blog from "./routes/blog/Blog";
 import SignIn from "./routes/SignIn/SignIn";
 import SignUp from "./SignUp";
-import Checkout from "./checkout/Checkout";
 import Pricing from "./routes/pricing/Pricing";
 
 function App() {
@@ -29,7 +28,6 @@ function App() {
         <Route path="signin" element={<SignIn SetLoggedInUser={SetLoggedInUser} />} />
         <Route path="/" element={<RequiredAuth><Blog /></RequiredAuth>} />
         <Route path="signup" element={<RequiredAuth><SignUp /></RequiredAuth>}/>
-        <Route path="checkout" element={<RequiredAuth><Checkout/></RequiredAuth>}/>
         <Route path="pricing" element={<RequiredAuth><Pricing/></RequiredAuth>}/>
         <Route path='*' element={<Navigate to="/" />} />
       </Routes>
