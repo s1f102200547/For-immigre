@@ -2,18 +2,16 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
 
-// WARNING keyを.envで管理する必要がある
 const firebaseConfig = {
-  apiKey: "AIzaSyBkCIZoyUkSYFJzS93dHG4-DlZpHxC8Hk8",
-  authDomain: "for-immigre.firebaseapp.com",
-  projectId: "for-immigre",
-  storageBucket: "for-immigre.appspot.com",
-  messagingSenderId: "1032186639713",
-  appId: "1:1032186639713:web:cc7a43b876f01f02814120",
-  measurementId: "G-9NEZM2FP76",
-  databaseURL: "https://for-immigre-default-rtdb.firebaseio.com/",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
 };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
