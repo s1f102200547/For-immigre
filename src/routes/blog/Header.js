@@ -1,12 +1,9 @@
 import * as React from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
-import { useState } from 'react';
 
 function Header(props) {
   const { sections, title, showOtherSection, showSearchedArticles } = props;

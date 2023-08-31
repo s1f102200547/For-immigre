@@ -26,7 +26,6 @@ export default function Blog() {
         <FeaturedPost key={data.title} data={data} showArticle={showArticle} /> //WARING titleが被ったときにkeyが唯一ではなくなる
       ))
     )
-    console.log(mainContent)
   }
 
   function showArticle(data){
@@ -37,19 +36,17 @@ export default function Blog() {
 
   function showSearchedArticles(words){
     const keys = ["article", "title", "description"];
-const sections = ["tourism", "tax", "employment", "anime", "low", "manner", "safety", "economy"]
+    const sections = ["tourism", "tax", "employment", "anime", "low", "manner", "safety", "economy"]
 
-let result = [];
+    let result = [];
 
-sections.forEach(section => {
-    const data = blogData.users[section];
-    let sectionDataSources = [];
+    sections.forEach(section => {
+      const data = blogData.users[section];
+      let sectionDataSources = [];
 
-    Object.keys(data).forEach(key => {
+      Object.keys(data).forEach(key => {
         let filteredData = {};
-
         keys.forEach(k => filteredData[k] = data[key][k]);
-
         filteredData['id'] = key
         filteredData['section'] = section;
         sectionDataSources.push(filteredData);
@@ -57,8 +54,6 @@ sections.forEach(section => {
 
     result = result.concat(sectionDataSources);
 });
-
-console.log("result", result);
 
 const wordsArray = words.split(" "); // 文字列をスペースで区切って配列に変える
 
@@ -70,7 +65,6 @@ const filteredResult = result.filter(item => {
   }
   return false; 
 });
-  console.log("filterdResult", filteredResult);
   setMainContent(
     filteredResult.map((data) => (
       <FeaturedPost key={data.title} data={data} showArticle={showArticle} data-testid="featured-post" /> //WARING titleが被ったときにkeyが唯一ではなくなる
@@ -81,7 +75,6 @@ const filteredResult = result.filter(item => {
   useEffect(() => {
     GetDB()
     .then((data) => {
-      console.log("getDB success!", data);
       setBlogData(data);
     })
     .catch(() => {
@@ -92,7 +85,6 @@ const filteredResult = result.filter(item => {
   useEffect(() => {
     if(blogData){
       const tourismData = Object.values(blogData.users.tourism);
-      console.log("tourismData", tourismData)
       setMainContent(
       tourismData.map((data) => (
         <FeaturedPost key={data.title} data={data} showArticle={showArticle} /> //WARING titleが被ったときにkeyが唯一ではなくなる
