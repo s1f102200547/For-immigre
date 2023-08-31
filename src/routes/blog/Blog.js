@@ -18,6 +18,7 @@ export default function Blog() {
   const [ blogData, setBlogData ] = useState(null);
   const [ mainContent, setMainContent ] = useState(null);
 
+  // セクションの切り替えを行う関数
   function showOtherSection(section){
     const lowerCaseOfSection = section.toLowerCase(); //”data.users.小文字” なので小文字にそろえる
     const sectionData = Object.values(blogData.users[lowerCaseOfSection]);
@@ -34,12 +35,15 @@ export default function Blog() {
     )
   }
 
+  // TODO 関数に複数の役割があるので、分割したい
+  // 検索結果に応じた記事を表示させる関数
   function showSearchedArticles(words){
-    const keys = ["article", "title", "description"];
+    const keys = ["article", "title", "description"]; // TODO imageとimageLabelも追加し、表示させたい
     const sections = ["tourism", "tax", "employment", "anime", "low", "manner", "safety", "economy"]
 
     let result = [];
 
+    // TODO DBのデータ取得時に行い、他の関数からも使えるようにしたい
     sections.forEach(section => {
       const data = blogData.users[section];
       let sectionDataSources = [];
@@ -50,26 +54,27 @@ export default function Blog() {
         filteredData['id'] = key
         filteredData['section'] = section;
         sectionDataSources.push(filteredData);
+      });
+
+      result = result.concat(sectionDataSources);
     });
 
-    result = result.concat(sectionDataSources);
-});
+    const wordsArray = words.split(" "); // 文字列をスペースで区切って配列に変える
 
-const wordsArray = words.split(" "); // 文字列をスペースで区切って配列に変える
+    const filteredResult = result.filter(item => { 
+      for (const word of wordsArray) { 
+        if (item && (item.title?.includes(word) || item.description?.includes(word))) { 
+            return true; 
+          }
+        }
+        return false; 
+      });
 
-const filteredResult = result.filter(item => { 
-  for (const word of wordsArray) { 
-    if (item && (item.title?.includes(word) || item.description?.includes(word))) { 
-      return true; 
-    }
-  }
-  return false; 
-});
-  setMainContent(
-    filteredResult.map((data) => (
-      <FeaturedPost key={data.title} data={data} showArticle={showArticle} data-testid="featured-post" /> //WARING titleが被ったときにkeyが唯一ではなくなる
-    ))
-  )
+      setMainContent(
+        filteredResult.map((data) => (
+          <FeaturedPost key={data.title} data={data} showArticle={showArticle} data-testid="featured-post" /> //WARING titleが被ったときにkeyが唯一ではなくなる
+        ))
+      )
   }
 
   useEffect(() => {
@@ -81,6 +86,7 @@ const filteredResult = result.filter(item => {
       console.log("db error");
     })
   }, []);
+
   //↓blogDataを定義後mainContentを定義
   useEffect(() => {
     if(blogData){
