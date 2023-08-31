@@ -38,16 +38,17 @@ export default function Blog() {
   // TODO 関数に複数の役割があるので、分割したい
   // 検索結果に応じた記事を表示させる関数
   function showSearchedArticles(words){
-    const keys = ["article", "title", "description"]; // TODO imageとimageLabelも追加し、表示させたい
+    const keys = ["article", "title", "description", "image", "imageLabel"];
     const sections = ["tourism", "tax", "employment", "anime", "low", "manner", "safety", "economy"]
 
     let result = [];
 
-    // TODO DBのデータ取得時に行い、他の関数からも使えるようにしたい
+    // TODO DBのデータ取得時に行い、他の関数からも使えるようにしたい(検索結果に応じたfilter機能は除く)
     sections.forEach(section => {
       const data = blogData.users[section];
       let sectionDataSources = [];
 
+      //各detaにidとsectionを追加
       Object.keys(data).forEach(key => {
         let filteredData = {};
         keys.forEach(k => filteredData[k] = data[key][k]);
@@ -69,7 +70,6 @@ export default function Blog() {
         }
         return false; 
       });
-
       setMainContent(
         filteredResult.map((data) => (
           <FeaturedPost key={data.title} data={data} showArticle={showArticle} data-testid="featured-post" /> //WARING titleが被ったときにkeyが唯一ではなくなる
